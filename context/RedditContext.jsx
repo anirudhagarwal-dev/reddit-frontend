@@ -1,6 +1,5 @@
-import React, { createContext, useState, useContext } from "react";
-
-const RedditContext = createContext();
+import React, { useState } from "react";
+import { RedditContext } from "./RedditStore";
 
 export function RedditProvider({ children }) {
   const [subreddit, setSubreddit] = useState("popular");
@@ -17,8 +16,4 @@ export function RedditProvider({ children }) {
       {children}
     </RedditContext.Provider>
   );
-}
-
-export function useReddit() {
-  return useContext(RedditContext);
 }
