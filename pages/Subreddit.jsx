@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostCard from "../components/PostCard";
-import { useReddit } from "../context/RedditContext";
+import { useReddit } from "../context/RedditStore";
 
 export default function Subreddit() {
   const { name } = useParams();
@@ -20,7 +20,7 @@ export default function Subreddit() {
       })
       .catch((e) => console.error(e))
       .finally(() => setLoading(false));
-  }, [name]);
+  }, [name, setSubreddit]);
 
   return (
     <div>

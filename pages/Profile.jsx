@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useReddit } from "../context/RedditContext";
+import { useReddit } from "../context/RedditStore";
 
 export default function Profile() {
   const { accessToken, saveToken } = useReddit();
