@@ -1,42 +1,202 @@
-#root {
-  max-width: 1280px;
+:root {
+  --bg-color: #DAE0E6;
+  --header-bg: #ffffff;
+  --text-color: #1c1c1c;
+  --text-secondary: #878a8c;
+  --card-bg: #ffffff;
+  --border-color: #ccc;
+  --input-bg: #F6F7F8;
+  --hover-bg: #f6f7f8;
+  --sidebar-bg: #ffffff;
+}
+
+.dark-mode {
+  --bg-color: #030303;
+  --header-bg: #1a1a1b;
+  --text-color: #D7DADC;
+  --text-secondary: #818384;
+  --card-bg: #1a1a1b;
+  --border-color: #343536;
+  --input-bg: #272729;
+  --hover-bg: #272729;
+  --sidebar-bg: #1a1a1b;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app-header {
+  background: var(--header-bg);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 18px;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .logo-text { display: block; }
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #0079D3;
+  background: var(--header-bg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-btn {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  background: var(--hover-bg);
+}
+
+.login-btn {
+  border: 1px solid #0079D3;
+  color: #0079D3;
+}
+
+.profile-btn {
+  background: #0079D3;
+  color: white !important;
+}
+
+/* Layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  gap: 24px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.left-sidebar {
+  display: none;
+  width: 270px;
+  flex-shrink: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.right-sidebar {
+  display: none;
+  width: 310px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .main-layout {
+    grid-template-columns: 270px 1fr;
+    max-width: 1600px;
   }
-  to {
-    transform: rotate(360deg);
+  .left-sidebar { 
+    display: block; 
+    position: sticky;
+    top: 68px; /* Header height + 20px */
+    height: fit-content;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 1200px) {
+  .main-layout {
+    grid-template-columns: 270px 1fr 310px;
+  }
+  .right-sidebar { 
+    display: block; 
+    position: sticky;
+    top: 68px;
+    height: fit-content;
   }
 }
 
-.card {
-  padding: 2em;
+.sidebar-section {
+  background: var(--card-bg);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
 }
 
-.read-the-docs {
-  color: #888;
+.sidebar-section h3 {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sidebar-link:hover {
+  background-color: var(--hover-bg);
+}
+
+.content {
+  min-width: 0;
 }
